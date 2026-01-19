@@ -7,7 +7,7 @@ h1 {
   font-family: "Bitcount Single", sans-serif;
   font-weight: 400;
   font-size: 50px;
-  position: relative;
+  position: absolute;
   left: 250px;
   top: 35px;
 }
@@ -20,12 +20,12 @@ h1 {
   border: none;
   color: lightblue;
   padding: 30px 30px;
-  margin-right: 250px;
+  margin-right: 150px;
   text-align: center;
   display: inline-block;
   cursor: pointer;
   border-radius: 38px;
-  position: relative;
+  position: absolute;
   left: 250px;
   top: 100px;
 }
