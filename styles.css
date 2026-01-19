@@ -20,12 +20,11 @@ h1 {
   border: none;
   color: lightblue;
   padding: 30px 30px;
-  margin-right: 150px;
   text-align: center;
   display: inline-block;
   cursor: pointer;
   border-radius: 38px;
-  position: absolute;
+  position: relative;
   left: 250px;
   top: 100px;
 }
