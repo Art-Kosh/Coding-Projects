@@ -20,6 +20,7 @@ h1 {
   border: none;
   color: lightblue;
   padding: 30px 30px;
+  margin-right: 50px;
   text-align: center;
   display: inline-block;
   cursor: pointer;
@@ -27,5 +28,4 @@ h1 {
   position: relative;
   left: 1500px;
   top: 100px;
-  margin-right: 50px;
 }
