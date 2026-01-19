@@ -1,3 +1,4 @@
-theme: awesome-jekyll-theme
 plugins:
   - awesome-jekyll-theme
+  - jekyll-remote-theme
+remote_theme: awesome-jekyll-theme
