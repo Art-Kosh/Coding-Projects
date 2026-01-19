@@ -1,4 +1,3 @@
-Theme: awesome-jekyll-theme
+remote_theme: luxedo/jekyll-theme-potato-hacker
 plugins:
-  - awesome-jekyll-theme
   - jekyll-remote-theme
