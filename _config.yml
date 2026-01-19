@@ -1,3 +1,5 @@
 remote_theme: piazzai/hacked-jekyll
+lowercase: false
+newtab: true
 plugins:
   - jekyll-remote-theme
