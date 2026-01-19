@@ -3,30 +3,30 @@ body {
 }
 
 h1 {
-  color: black;
   font-family: "Bitcount Single", sans-serif;
   font-weight: 400;
   font-size: 50px;
+  color: black;
   position: relative;
-  left: 400px;
   top: 35px;
+  left: 400px;
 }
 
 .button {
+  display: inline-block;
+  padding: 30px 30px;
+  margin-right: 200px;
+  position: relative;
+  top: 100px;
+  left: 300px;
   font-family: "Bitcount Single", sans-serif;
   font-weight: 400;
   font-size: 25px;
-  background-color: black;
-  border: none;
-  color: lightblue;
-  padding: 30px 30px;
-  margin-right: 200px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
+  color: lightblue;
+  background-color: black;
+  border: none;
   border-radius: 38px;
-  position: relative;
-  left: 300px;
-  top: 100px;
+  cursor: pointer;
 }
