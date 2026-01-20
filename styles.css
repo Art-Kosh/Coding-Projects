@@ -1,4 +1,6 @@
 body {
+  max-width: 1920px;
+  max-height: 945px;
   background-color: lightblue;
 }
 
