@@ -9,16 +9,16 @@ h1 {
   color: black;
   position: relative;
   top: 35px;
-  left: 400px;
+  left: 600px;
 }
 
 .button {
   display: inline-block;
   padding: 30px 30px;
-  margin-right: 200px;
+  margin-right: 150px;
   position: relative;
   top: 100px;
-  left: 300px;
+  left: 500px;
   font-family: "Bitcount Single", sans-serif;
   font-weight: 400;
   font-size: 25px;
