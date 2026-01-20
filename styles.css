@@ -3,8 +3,10 @@ body {
 }
 
 h1 {
+  display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   font-family: "Bitcount Single", sans-serif;
   font-weight: 400;
   font-size: 50px;
@@ -12,8 +14,10 @@ h1 {
 }
 
 .button {
+  display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   padding: 20px 20px;
   margin-right: 200px;
   position: relative;
