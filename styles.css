@@ -1,26 +1,24 @@
 body {
-  width: 1000px;
-  height: 500px;
   background-color: lightblue;
 }
 
 h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Bitcount Single", sans-serif;
   font-weight: 400;
   font-size: 50px;
   color: black;
-  position: relative;
-  top: 35px;
-  left: 700px;
 }
 
 .button {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px 20px;
   margin-right: 200px;
   position: relative;
-  top: 75px;
-  left: 600px;
   font-family: "Bitcount Single", sans-serif;
   font-weight: 400;
   font-size: 25px;
