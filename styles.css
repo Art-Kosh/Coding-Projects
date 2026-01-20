@@ -11,16 +11,16 @@ h1 {
   color: black;
   position: relative;
   top: 35px;
-  left: 750px;
+  left: 500px;
 }
 
 .button {
   display: inline-block;
-  padding: 30px 30px;
-  margin-right: 150px;
+  padding: 20px 20px;
+  margin-right: 200px;
   position: relative;
-  top: 100px;
-  left: 675px;
+  top: 75px;
+  left: 400px;
   font-family: "Bitcount Single", sans-serif;
   font-weight: 400;
   font-size: 25px;
@@ -29,6 +29,6 @@ h1 {
   color: lightblue;
   background-color: black;
   border: none;
-  border-radius: 38px;
+  border-radius: 50px;
   cursor: pointer;
 }
