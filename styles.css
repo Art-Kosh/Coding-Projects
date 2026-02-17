@@ -48,11 +48,13 @@ body {
   }
 
   .button {
-    display: inline-flex;
+    display: flex;
     position: relative;
     top: 75px;
     justify-content: center; 
-    margin-right: 115px;
+    margin-right: 450px;
+    margin-left: 450px;
+    margin-bottom: 20px;
     font-family: "Bitcount Single", sans-serif;
     font-weight: 400;
     font-size: 25px;
