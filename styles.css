@@ -1,5 +1,5 @@
 body {
-  background-color: lightblue;
+  background-color: rgb(5, 180, 235);
 }
 
 h1 {
@@ -18,7 +18,7 @@ h1 {
     display: flex;
     position: relative;
     width: min-content;
-    top: 50px;
+    top: 25px;
     justify-content: center; 
     margin: 5px auto 5px auto;
     font-family: "Bitcount Single", sans-serif;
@@ -27,9 +27,9 @@ h1 {
     text-align: center;
     text-decoration: none;
     background-color: black;
-    color: lightblue;
+    color: rgb(5, 180, 235);
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    padding: 20px 40px;
+    padding: 10px 30px;
   }
