@@ -26,8 +26,8 @@ h2 {
   color: black;
 }
 
-.button {
-  display: block;
+a {
+  display: flex;
   position: relative;
   width: fit-content;
   justify-content: center;
@@ -47,7 +47,7 @@ h2 {
 }
 
 label {
-  display: block;
+  display: flex;
   position: relative;
   width: fit-content;
   justify-content: center; 
