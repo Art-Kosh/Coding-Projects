@@ -15,7 +15,7 @@ h1 {
 }
 
 .button {
-  display: flex;
+  display: block;
   position: relative;
   width: fit-content;
   top: 25px;
