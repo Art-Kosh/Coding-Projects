@@ -1,9 +1,9 @@
-const calculateBtn = document.getElementById("calculate");
+const calcbtn = document.getElementById("calc");
 
-calculateBtn.addEventListener("click", async function () {
+calcbtn.addEventListener("click", async function () {
   const grades = document.getElementById("grades")
-  const displayAverage = document.getElementById("average");
   const gradesArray = grades.value.split(",").map(String);
+  const displayAverage = document.getElementById("average");
   var gradeAverage = 0
 
   for (const object of gradesArray) {
