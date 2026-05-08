@@ -68,7 +68,6 @@ label {
 input {
   display: flex;
   position: relative;
-  width: fit-content;
   justify-content: center; 
   margin: auto auto auto auto;
   font-family: "Bitcount Single", sans-serif;
