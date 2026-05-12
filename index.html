@@ -17,6 +17,7 @@
     <a href="Grade Calc/calc.html" target="_blank" class="button">Average Calculator</a>
     <a href="Game/game.html" target="_blank" class="button">Godot Test Game</a>
     <script>
+      // Set opacity after entrance animation so it can't be reset
       document.querySelectorAll('a[href]').forEach(link => {
         link.addEventListener('animationend', function handler(e) {
           if (e.animationName === 'cardSlideIn') {
@@ -24,54 +25,19 @@
             this.removeEventListener('animationend', handler);
           }
         });
-
-        link.addEventListener('click', function(e) {
-          if (this.dataset.navigating) return;
-
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          this.dataset.navigating = 'true';
-
-          this.style.transform = 'translateY(-3px) scale(1.04)';
-          this.style.borderColor = 'rgba(200, 255, 0, 0.3)';
-          this.style.boxShadow = '0 6px 24px var(--accent-glow)';
-          void this.offsetHeight;
-
-          const el = this;
-          const href = this.getAttribute('href');
-          const target = this.getAttribute('target');
-
-          setTimeout(() => {
-            el.style.transform = '';
-            el.style.borderColor = '';
-            el.style.boxShadow = '';
-            delete el.dataset.navigating;
-
-            setTimeout(() => {
-              if (target === '_blank') {
-                window.open(href, '_blank', 'noopener');
-              } else {
-                window.location.href = href;
-              }
-            }, 150);
-          }, 200);
-        }, true);
       });
 
-      // Clean up on ANY return to this page
-      function resetAllLinks() {
+      // Clean up on return to page
+      function resetAll() {
         document.querySelectorAll('a[href]').forEach(link => {
-          link.style.transform = '';
-          link.style.borderColor = '';
-          link.style.boxShadow = '';
-          delete link.dataset.navigating;
+          link.blur();
+          link.classList.remove('pressed');
         });
       }
-
-      window.addEventListener('pageshow', resetAllLinks);
-      window.addEventListener('focus', resetAllLinks);
-      document.addEventListener('visibilitychange', function() {
-        if (!document.hidden) resetAllLinks();
+      window.addEventListener('pageshow', resetAll);
+      window.addEventListener('focus', resetAll);
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) resetAll();
       });
     </script>
   </body>
