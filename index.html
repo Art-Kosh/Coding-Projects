@@ -17,11 +17,15 @@
     <a href="Grade Calc/calc.html" target="_blank" class="button">Average Calculator</a>
     <a href="Game/game.html" target="_blank" class="button">Godot Test Game</a>
     <script>
+      let isTouch = false;
+      window.addEventListener('touchstart', () => { isTouch = true; }, { once: true, passive: true });
+
       document.querySelectorAll('a[href]').forEach(link => {
         link.addEventListener('click', function(e) {
+          if (!isTouch) return; // Desktop clicks go through normally
+
           e.preventDefault();
 
-          // Clear all other buttons first
           document.querySelectorAll('a[href]').forEach(a => {
             a.style.transform = '';
             a.style.borderColor = '';
