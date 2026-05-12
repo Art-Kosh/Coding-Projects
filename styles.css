@@ -211,8 +211,6 @@ a:active {
   transition-duration: 0s;
 }
 
-
-
 /* --- Color variation per card --- */
 a:nth-of-type(1):hover {
   --accent: #c8ff00;

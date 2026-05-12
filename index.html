@@ -16,58 +16,31 @@
     <a href="https://studio.code.org/projects/gamelab/f10401ab-95f7-4b0f-a3f3-9f14953fb467" target="_blank" class="button">G10 Final Project</a>
     <a href="Grade Calc/calc.html" target="_blank" class="button">Average Calculator</a>
     <a href="Game/game.html" target="_blank" class="button">Godot Test Game</a>
-   <script>
+    <script>
       document.querySelectorAll('a[href]').forEach(link => {
-        link.addEventListener('animationend', function handler(e) {
-          if (e.animationName === 'cardSlideIn') {
-            this.style.opacity = '1';
-            this.removeEventListener('animationend', handler);
-          }
-        });
-
-        link.addEventListener('touchstart', function() {
-          this.classList.add('pressed');
-        }, { passive: true });
-
         link.addEventListener('click', function(e) {
-          if (!this.classList.contains('pressed')) return;
-
           e.preventDefault();
+
+          // Clear all other buttons first
+          document.querySelectorAll('a[href]').forEach(a => {
+            a.style.transform = '';
+            a.style.borderColor = '';
+            a.style.boxShadow = '';
+          });
+
+          this.style.transform = 'translateY(-3px) scale(1.04)';
+          this.style.borderColor = 'rgba(200, 255, 0, 0.3)';
+          this.style.boxShadow = '0 6px 24px var(--accent-glow)';
+
           const href = this.getAttribute('href');
           const target = this.getAttribute('target');
-          const el = this;
 
           setTimeout(() => {
-            el.classList.remove('pressed');
-            el.blur();
-
-            // Use a real <a> click to avoid popup blockers
-            const tempLink = document.createElement('a');
-            tempLink.href = href;
-            if (target) tempLink.target = target;
-            tempLink.rel = 'noopener';
-            document.body.appendChild(tempLink);
-            tempLink.click();
-            document.body.removeChild(tempLink);
+            if (target === '_blank') window.open(href, '_blank', 'noopener');
+            else window.location.href = href;
           }, 300);
         });
       });
-
-      function resetAll() {
-        document.querySelectorAll('a[href]').forEach(link => {
-          link.classList.remove('pressed');
-          link.blur();
-        });
-      }
-      window.addEventListener('pageshow', resetAll);
-      window.addEventListener('focus', resetAll);
-      document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) resetAll();
-      });
-      // Also reset after a short delay on any touch end, as a safety net
-      document.addEventListener('touchend', () => {
-        setTimeout(resetAll, 500);
-      }, { passive: true });
     </script>
   </body>
 </html>
