@@ -20,26 +20,26 @@
       document.querySelectorAll('a[href]').forEach(link => {
         link.addEventListener('click', function(e) {
           if (this.dataset.navigating) return;
-          
+
           e.preventDefault();
           e.stopImmediatePropagation();
           this.dataset.navigating = 'true';
           this.classList.add('tapped');
-          
-          const el = this;
+
           const href = this.getAttribute('href');
           const target = this.getAttribute('target');
-          
-          setTimeout(() => {
-            el.classList.remove('tapped');
-            delete el.dataset.navigating;
-            
+
+          this.addEventListener('animationend', function handler() {
+            this.removeEventListener('animationend', handler);
+            this.classList.remove('tapped');
+            delete this.dataset.navigating;
+
             if (target === '_blank') {
               window.open(href, '_blank', 'noopener');
             } else {
               window.location.href = href;
             }
-          }, 250);
+          });
         }, true);
       });
     </script>
