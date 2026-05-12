@@ -17,7 +17,6 @@
     <a href="Grade Calc/calc.html" target="_blank" class="button">Average Calculator</a>
     <a href="Game/game.html" target="_blank" class="button">Godot Test Game</a>
     <script>
-      // Fix entrance animation — once played, set opacity directly so nothing resets it
       document.querySelectorAll('a[href]').forEach(link => {
         link.addEventListener('animationend', function handler(e) {
           if (e.animationName === 'cardSlideIn') {
@@ -33,11 +32,9 @@
           e.stopImmediatePropagation();
           this.dataset.navigating = 'true';
 
-          // Apply tap style directly
           this.style.transform = 'translateY(-3px) scale(1.04)';
           this.style.borderColor = 'rgba(200, 255, 0, 0.3)';
           this.style.boxShadow = '0 6px 24px var(--accent-glow)';
-          this.querySelector('::after'); // force repaint
           void this.offsetHeight;
 
           const el = this;
@@ -45,7 +42,6 @@
           const target = this.getAttribute('target');
 
           setTimeout(() => {
-            // Reset styles
             el.style.transform = '';
             el.style.borderColor = '';
             el.style.boxShadow = '';
@@ -62,14 +58,20 @@
         }, true);
       });
 
-      // Clean up on swipe-back / tab return
-      window.addEventListener('pageshow', function() {
+      // Clean up on ANY return to this page
+      function resetAllLinks() {
         document.querySelectorAll('a[href]').forEach(link => {
           link.style.transform = '';
           link.style.borderColor = '';
           link.style.boxShadow = '';
           delete link.dataset.navigating;
         });
+      }
+
+      window.addEventListener('pageshow', resetAllLinks);
+      window.addEventListener('focus', resetAllLinks);
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) resetAllLinks();
       });
     </script>
   </body>
