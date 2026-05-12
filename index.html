@@ -10,34 +10,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
-  <script>
-    // Delay navigation so the tap animation is visible
-    document.querySelectorAll('a[href]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        // Only on touch devices
-        if (!window.matchMedia('(hover: none)').matches) return;
-        
-        e.preventDefault();
-        this.classList.add('tapped');
-        
-        const href = this.href;
-        const target = this.target;
-        
-        setTimeout(() => {
-          if (target === '_blank') {
-            window.open(href, '_blank');
-          } else {
-            window.location.href = href;
-          }
-        }, 500);
-      });
-    });
-  </script>
   <body>
     <h1>My Coding Projects!</h1>
     <a href="https://studio.code.org/projects/applab/d62e5c14-101a-49e6-9bf3-4ed0ada10620" target="_blank" class="button">G10 MidTerm Summative Project</a>
     <a href="https://studio.code.org/projects/gamelab/f10401ab-95f7-4b0f-a3f3-9f14953fb467" target="_blank" class="button">G10 Final Project</a>
     <a href="Grade Calc/calc.html" target="_blank" class="button">Average Calculator</a>
     <a href="Game/game.html" target="_blank">Godot Test Game</a>
+    <script>
+      // Delay navigation so the tap animation is visible
+      document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Only on touch devices
+          if (!window.matchMedia('(hover: none)').matches) return;
+          
+          e.preventDefault();
+          this.classList.add('tapped');
+          
+          const href = this.href;
+          const target = this.target;
+          
+          setTimeout(() => {
+            if (target === '_blank') {
+              window.open(href, '_blank');
+            } else {
+              window.location.href = href;
+            }
+          }, 200);
+        });
+      });
+  </script>
   </body>
 </html>

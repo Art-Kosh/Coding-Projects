@@ -11,34 +11,33 @@
     <link rel="stylesheet" href="calc.css">
     <script src="script.js" defer></script>
   </head>
-  <script>
-  // Delay navigation so the tap animation is visible
-  document.querySelectorAll('a[href]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      // Only on touch devices
-      if (!window.matchMedia('(hover: none)').matches) return;
-      
-      e.preventDefault();
-      this.classList.add('tapped');
-      
-      const href = this.href;
-      const target = this.target;
-      
-      setTimeout(() => {
-        if (target === '_blank') {
-          window.open(href, '_blank');
-        } else {
-          window.location.href = href;
-        }
-      }, 500);
-    });
-  });
-</script>
-
   <body>
     <h1>Average Calculator</h1>
     <h2>Put a Comma After Each Grade</h2>
     <label for="grades">Grades: <input type="text" id="grades" name="grades" style="width: 100px"></label>
     <a id="calc">Average: <span id="average"></span></a>
+    <script>
+      // Delay navigation so the tap animation is visible
+      document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Only on touch devices
+          if (!window.matchMedia('(hover: none)').matches) return;
+          
+          e.preventDefault();
+          this.classList.add('tapped');
+          
+          const href = this.href;
+          const target = this.target;
+          
+          setTimeout(() => {
+            if (target === '_blank') {
+              window.open(href, '_blank');
+            } else {
+              window.location.href = href;
+            }
+          }, 200);
+        });
+      });
+  </script>
   </body>
 </html>
