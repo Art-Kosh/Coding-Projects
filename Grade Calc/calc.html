@@ -16,32 +16,5 @@
     <h2>Put a Comma After Each Grade</h2>
     <label for="grades">Grades: <input type="text" id="grades" name="grades" style="width: 100px"></label>
     <a id="calc" class="button">Average: <span id="average"></span></a>
-    <script>
-      document.querySelectorAll('a[href]').forEach(link => {
-        link.addEventListener('click', function(e) {
-          if (this.dataset.navigating) return;
-
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          this.dataset.navigating = 'true';
-          this.classList.add('tapped');
-
-          const href = this.getAttribute('href');
-          const target = this.getAttribute('target');
-
-          this.addEventListener('animationend', function handler() {
-            this.removeEventListener('animationend', handler);
-            this.classList.remove('tapped');
-            delete this.dataset.navigating;
-
-            if (target === '_blank') {
-              window.open(href, '_blank', 'noopener');
-            } else {
-              window.location.href = href;
-            }
-          });
-        }, true);
-      });
-    </script>
   </body>
 </html>
