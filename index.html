@@ -34,39 +34,41 @@
         });
       }
 
-      function applyPop(el) {
-        Object.assign(el.style, {
-          scale: '1.05',
-          translate: '0 -1px',
-          borderColor: 'rgba(200,255,0,0.3)',
-          boxShadow: '0 6px 24px rgba(200,255,0,0.15)'
-        });
-      }
-
       links.forEach(link => {
         link.addEventListener('click', function(e) {
           if (Date.now() - lastTouchTime > 500) return;
 
           e.preventDefault();
-
           if (pendingNav) clearTimeout(pendingNav);
 
           clearAll();
           void this.offsetHeight;
-          applyPop(this);
+          Object.assign(this.style, {
+            scale: '1.05',
+            translate: '0 -1px',
+            borderColor: 'rgba(200,255,0,0.3)',
+            boxShadow: '0 6px 24px rgba(200,255,0,0.15)'
+          });
 
           const href = this.getAttribute('href');
           const target = this.getAttribute('target');
 
-          let newWindow = null;
-          if (target === '_blank') {
-            newWindow = window.open('', '_blank');
-          }
-
           pendingNav = setTimeout(() => {
             pendingNav = null;
-            if (newWindow) newWindow.location.href = href;
-            else window.location.href = href;
+            if (target === '_blank') {
+              const w = window.open(href, '_blank', 'noopener');
+              if (!w) {
+                const a = document.createElement('a');
+                a.href = href;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+              }
+            } else {
+              window.location.href = href;
+            }
           }, 250);
         });
       });
