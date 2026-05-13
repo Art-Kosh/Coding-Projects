@@ -18,7 +18,17 @@
     <a href="Game/game.html" target="_blank" class="button">Godot Test Game</a>
     <script>
       let isTouch = false;
+      let pendingNav = null;
       window.addEventListener('touchstart', () => { isTouch = true; }, { once: true, passive: true });
+
+      function clearAllButtons() {
+        document.querySelectorAll('a[href]').forEach(a => {
+          a.style.scale = '';
+          a.style.translate = '';
+          a.style.borderColor = '';
+          a.style.boxShadow = '';
+        });
+      }
 
       document.querySelectorAll('a[href]').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -26,13 +36,9 @@
 
           e.preventDefault();
 
-          // Reset all buttons first
-          document.querySelectorAll('a[href]').forEach(a => {
-            a.style.scale = '';
-            a.style.translate = '';
-            a.style.borderColor = '';
-            a.style.boxShadow = '';
-          });
+          if (pendingNav) clearTimeout(pendingNav);
+
+          clearAllButtons();
 
           this.style.scale = '1.05';
           this.style.translate = '0 -1px';
@@ -42,11 +48,20 @@
           const href = this.getAttribute('href');
           const target = this.getAttribute('target');
 
-          setTimeout(() => {
+          pendingNav = setTimeout(() => {
+            pendingNav = null;
             if (target === '_blank') window.open(href, '_blank', 'noopener');
             else window.location.href = href;
           }, 250);
         });
+      });
+
+      document.body.addEventListener('click', function(e) {
+        if (!isTouch) return;
+        if (e.target.closest('a[href]')) return;
+        if (pendingNav) clearTimeout(pendingNav);
+        pendingNav = null;
+        clearAllButtons();
       });
     </script>
   </body>
