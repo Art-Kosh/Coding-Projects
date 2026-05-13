@@ -19,35 +19,27 @@
     <script>
       let isTouch = false;
       let pendingNav = null;
+      const links = document.querySelectorAll('a[href]');
       window.addEventListener('touchstart', () => { isTouch = true; }, { once: true, passive: true });
 
-      function clearAllButtons() {
-        document.querySelectorAll('a[href]').forEach(a => {
-          a.style.scale = '';
-          a.style.translate = '';
-          a.style.borderColor = '';
-          a.style.boxShadow = '';
-        });
+      function clearAll() {
+        links.forEach(a => a.removeAttribute('style'));
       }
 
-      document.querySelectorAll('a[href]').forEach(link => {
+      links.forEach(link => {
         link.addEventListener('click', function(e) {
           if (!isTouch) return;
-
           e.preventDefault();
-
           if (pendingNav) clearTimeout(pendingNav);
-
-          clearAllButtons();
-
-          this.style.scale = '1.05';
-          this.style.translate = '0 -1px';
-          this.style.borderColor = 'rgba(200,255,0,0.3)';
-          this.style.boxShadow = '0 6px 24px rgba(200,255,0,0.15)';
-
+          clearAll();
+          Object.assign(this.style, {
+            scale: '1.05',
+            translate: '0 -1px',
+            borderColor: 'rgba(200,255,0,0.3)',
+            boxShadow: '0 6px 24px rgba(200,255,0,0.15)'
+          });
           const href = this.getAttribute('href');
           const target = this.getAttribute('target');
-
           pendingNav = setTimeout(() => {
             pendingNav = null;
             if (target === '_blank') window.open(href, '_blank', 'noopener');
@@ -56,12 +48,11 @@
         });
       });
 
-      document.body.addEventListener('click', function(e) {
-        if (!isTouch) return;
-        if (e.target.closest('a[href]')) return;
+      document.body.addEventListener('click', e => {
+        if (!isTouch || e.target.closest('a[href]')) return;
         if (pendingNav) clearTimeout(pendingNav);
         pendingNav = null;
-        clearAllButtons();
+        clearAll();
       });
     </script>
   </body>
