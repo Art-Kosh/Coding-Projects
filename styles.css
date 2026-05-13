@@ -197,8 +197,8 @@ a:hover::after { scale: 1 1; }
 a:hover::before { color: var(--accent); }
 
 a:active {
-  scale: 1.25;
-  translate: 0 -8px;
+  scale: 1.2;
+  translate: 0 -4px;
   border-color: rgba(200,255,0,0.3);
   box-shadow: 0 6px 24px var(--accent-glow);
   transition-duration: 0.15s;
@@ -232,6 +232,6 @@ a:focus-visible {
 
   a:active {
     scale: 1.05;
-    translate: 0 -4px;
+    translate: 0 -2px;
   }
 }
