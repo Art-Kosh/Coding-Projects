@@ -18,13 +18,13 @@
     <a id="calc" class="button">Average: <span id="average"></span></a>
     <script>
       let lastTouch = 0;
+      const calc = document.getElementById('calc');
       document.addEventListener('touchstart', () => {
         lastTouch = Date.now();
       }, { passive: true });
 
       document.body.addEventListener('click', e => {
         if (Date.now() - lastTouch > 500) return;
-        const calc = document.getElementById('calc');
         if (!e.target.closest('#calc')) {
           calc.removeAttribute('style');
         }
