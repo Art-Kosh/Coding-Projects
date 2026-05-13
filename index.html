@@ -25,15 +25,6 @@
         lastTouchTime = Date.now();
       }, { passive: true });
 
-      function clearAll() {
-        links.forEach(a => {
-          a.style.transition = 'none';
-          a.removeAttribute('style');
-          void a.offsetHeight;
-          a.style.transition = '';
-        });
-      }
-
       links.forEach(link => {
         link.addEventListener('click', function(e) {
           if (Date.now() - lastTouchTime > 500) return;
@@ -41,8 +32,8 @@
           e.preventDefault();
           if (pendingNav) clearTimeout(pendingNav);
 
-          clearAll();
-          void this.offsetHeight;
+          links.forEach(a => a.removeAttribute('style'));
+
           Object.assign(this.style, {
             scale: '1.05',
             translate: '0 -1px',
@@ -55,20 +46,8 @@
 
           pendingNav = setTimeout(() => {
             pendingNav = null;
-            if (target === '_blank') {
-              const w = window.open(href, '_blank', 'noopener');
-              if (!w) {
-                const a = document.createElement('a');
-                a.href = href;
-                a.target = '_blank';
-                a.rel = 'noopener';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-              }
-            } else {
-              window.location.href = href;
-            }
+            if (target === '_blank') window.open(href, '_blank', 'noopener');
+            else window.location.href = href;
           }, 250);
         });
       });
