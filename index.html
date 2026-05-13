@@ -38,7 +38,8 @@
           const href = this.getAttribute('href');
           const target = this.getAttribute('target');
 
-          requestAnimationFrame(() => {
+          // Wait for the shrink transition to finish, then grow
+          setTimeout(() => {
             Object.assign(el.style, {
               scale: '1.05',
               translate: '0 -1px',
@@ -51,7 +52,7 @@
               if (target === '_blank') window.open(href, '_blank', 'noopener');
               else window.location.href = href;
             }, 250);
-          });
+          }, 350);
         });
       });
 
