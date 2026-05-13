@@ -32,27 +32,41 @@
           e.preventDefault();
           if (pendingNav) clearTimeout(pendingNav);
 
+          const isPopped = getComputedStyle(this).scale === '1.05';
+
           links.forEach(a => a.removeAttribute('style'));
 
           const el = this;
           const href = this.getAttribute('href');
           const target = this.getAttribute('target');
 
-          // Wait for the shrink transition to finish, then grow
-          setTimeout(() => {
-            Object.assign(el.style, {
+          if (isPopped) {
+            setTimeout(() => {
+              Object.assign(el.style, {
+                scale: '1.05',
+                translate: '0 -1px',
+                borderColor: 'rgba(200,255,0,0.3)',
+                boxShadow: '0 6px 24px rgba(200,255,0,0.15)'
+              });
+              pendingNav = setTimeout(() => {
+                pendingNav = null;
+                if (target === '_blank') window.open(href, '_blank', 'noopener');
+                else window.location.href = href;
+              }, 250);
+            }, 350);
+          } else {
+            Object.assign(this.style, {
               scale: '1.05',
               translate: '0 -1px',
               borderColor: 'rgba(200,255,0,0.3)',
               boxShadow: '0 6px 24px rgba(200,255,0,0.15)'
             });
-
             pendingNav = setTimeout(() => {
               pendingNav = null;
               if (target === '_blank') window.open(href, '_blank', 'noopener');
               else window.location.href = href;
             }, 250);
-          }, 350);
+          }
         });
       });
 
