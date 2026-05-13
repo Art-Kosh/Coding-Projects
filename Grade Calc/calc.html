@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -15,13 +15,21 @@
     <h1>Average Calculator</h1>
     <h2>Put a Comma After Each Grade</h2>
     <label for="grades">Grades: <input type="text" id="grades" name="grades" style="width: 100px"></label>
-    <a id="calc" class="button">Average: <span id="average"></span></a>
+    <a id="calc" class="button" role="button" tabindex="0">Average: <span id="average"></span></a>
     <script>
       let lastTouch = 0;
       const calc = document.getElementById('calc');
+
       document.addEventListener('touchstart', () => {
         lastTouch = Date.now();
       }, { passive: true });
+
+      calc.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          calc.click();
+        }
+      });
 
       document.body.addEventListener('click', e => {
         if (Date.now() - lastTouch > 500) return;

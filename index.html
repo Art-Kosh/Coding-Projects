@@ -25,6 +25,13 @@
         lastTouchTime = Date.now();
       }, { passive: true });
 
+      function clearAll() {
+        links.forEach(a => {
+          a.removeAttribute('style');
+          a.classList.remove('popped');
+        });
+      }
+
       links.forEach(link => {
         link.addEventListener('click', function(e) {
           if (Date.now() - lastTouchTime > 500) return;
@@ -32,9 +39,9 @@
           e.preventDefault();
           if (pendingNav) clearTimeout(pendingNav);
 
-          const isPopped = getComputedStyle(this).scale === '1.05';
+          const isPopped = this.classList.contains('popped');
 
-          links.forEach(a => a.removeAttribute('style'));
+          clearAll();
 
           const el = this;
           const href = this.getAttribute('href');
@@ -48,6 +55,7 @@
                 borderColor: 'rgba(200,255,0,0.3)',
                 boxShadow: '0 6px 24px rgba(200,255,0,0.15)'
               });
+              el.classList.add('popped');
               pendingNav = setTimeout(() => {
                 pendingNav = null;
                 if (target === '_blank') window.open(href, '_blank', 'noopener');
@@ -61,6 +69,7 @@
               borderColor: 'rgba(200,255,0,0.3)',
               boxShadow: '0 6px 24px rgba(200,255,0,0.15)'
             });
+            this.classList.add('popped');
             pendingNav = setTimeout(() => {
               pendingNav = null;
               if (target === '_blank') window.open(href, '_blank', 'noopener');
@@ -75,7 +84,7 @@
         if (e.target.closest('a[href]')) return;
         if (pendingNav) clearTimeout(pendingNav);
         pendingNav = null;
-        links.forEach(a => a.removeAttribute('style'));
+        clearAll();
       });
     </script>
   </body>
