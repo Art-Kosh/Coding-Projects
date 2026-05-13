@@ -25,6 +25,15 @@
           if (!isTouch) return;
 
           e.preventDefault();
+
+          // Reset all buttons first
+          document.querySelectorAll('a[href]').forEach(a => {
+            a.style.scale = '';
+            a.style.translate = '';
+            a.style.borderColor = '';
+            a.style.boxShadow = '';
+          });
+
           this.style.scale = '1.05';
           this.style.translate = '0 -1px';
           this.style.borderColor = 'rgba(200,255,0,0.3)';
