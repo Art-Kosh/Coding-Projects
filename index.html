@@ -16,5 +16,29 @@
     <a href="https://studio.code.org/projects/gamelab/f10401ab-95f7-4b0f-a3f3-9f14953fb467" target="_blank" class="button">G10 Final Project</a>
     <a href="Grade Calc/calc.html" target="_blank" class="button">Average Calculator</a>
     <a href="Game/game.html" target="_blank" class="button">Godot Test Game</a>
+    <script>
+      let isTouch = false;
+      window.addEventListener('touchstart', () => { isTouch = true; }, { once: true, passive: true });
+
+      document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (!isTouch) return;
+
+          e.preventDefault();
+          this.style.scale = '1.05';
+          this.style.translate = '0 -1px';
+          this.style.borderColor = 'rgba(200,255,0,0.3)';
+          this.style.boxShadow = '0 6px 24px rgba(200,255,0,0.15)';
+
+          const href = this.getAttribute('href');
+          const target = this.getAttribute('target');
+
+          setTimeout(() => {
+            if (target === '_blank') window.open(href, '_blank', 'noopener');
+            else window.location.href = href;
+          }, 250);
+        });
+      });
+    </script>
   </body>
 </html>
